@@ -1,14 +1,11 @@
 import pygame
 
-def xD(number):
-    number += 1
-
 class Ship():
 
-    def __init__(self, shipSetting, screen):
+    def __init__(self, gameSettings, screen):
         self.screen = screen
 
-        self.shipSetting = shipSetting
+        self.shipSettings = gameSettings.shipSettings
 
         self.image = pygame.image.load("../images/spaceship.bmp")
 
@@ -29,10 +26,10 @@ class Ship():
 
     def update(self):
         if self.moving_right and self.rect.right < self.screen_rect.right:
-            self.centerx += self.shipSetting.speed_factor
+            self.centerx += self.shipSettings.speed_factor
 
         if self.moving_left and self.rect.left > self.screen_rect.left:
-            self.centerx -= self.shipSetting.speed_factor
+            self.centerx -= self.shipSettings.speed_factor
 
         self.rect.centerx = self.centerx
 

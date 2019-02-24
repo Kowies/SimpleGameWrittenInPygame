@@ -19,10 +19,17 @@ class BulletSettings():
         self.color = color
         self.bullets_allowed = 3
 
+class AlienSettings():
+
+    def __init__(self, width = 30, height = 30):
+        self.width = width
+        self.height = height
+
 class GameSettings():
 
     def __init__(self):
         self.screenSettings = ScreenSettings()
         self.shipSettings = ShipSettings()
         self.bulletSettings = BulletSettings()
+        self.alienSettings = AlienSettings()
 
