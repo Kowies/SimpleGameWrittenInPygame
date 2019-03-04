@@ -13,24 +13,24 @@ def run_game():
     pygame.init()
     pygame.display.set_caption("myGame")
 
-    gameSettings = GameSettings()
-    screenSettings = gameSettings.screenSettings
-    shipSettings = gameSettings.shipSettings
+    game_settings = GameSettings()
+    screen_settings = game_settings.screen_settings
+    ship_settings = game_settings.ship_settings
 
-    screen = pygame.display.set_mode( (screenSettings.width, screenSettings.height) )
-    ship = Ship(gameSettings, screen)
+    screen = pygame.display.set_mode( (screen_settings.width, screen_settings.height) )
+    ship = Ship(game_settings, screen)
 
     bullets = Group()
 
     aliens = Group()
 
-    game_functions.createAlienFleet(gameSettings, screen, aliens)
+    game_functions.create_alien_fleet(game_settings, screen, aliens)
 
     while True:
-        game_functions.check_events(gameSettings, screen, ship, bullets)
+        game_functions.check_events(game_settings, screen, ship, bullets)
         ship.update()
         game_functions.update_bullets(bullets)
-        game_functions.update_screen(screenSettings, screen, ship, aliens, bullets)
+        game_functions.update_screen(game_settings, screen, ship, aliens, bullets)
 
         print(len(bullets))
 

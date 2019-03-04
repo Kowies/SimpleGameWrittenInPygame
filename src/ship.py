@@ -2,10 +2,10 @@ import pygame
 
 class Ship():
 
-    def __init__(self, gameSettings, screen):
+    def __init__(self, game_settings, screen):
         self.screen = screen
 
-        self.shipSettings = gameSettings.shipSettings
+        self.ship_settings = game_settings.ship_settings
 
         self.image = pygame.image.load("../images/spaceship.bmp")
 
@@ -26,12 +26,12 @@ class Ship():
 
     def update(self):
         if self.moving_right and self.rect.right < self.screen_rect.right:
-            self.centerx += self.shipSettings.speed_factor
+            self.centerx += self.ship_settings.speed_factor
 
         if self.moving_left and self.rect.left > self.screen_rect.left:
-            self.centerx -= self.shipSettings.speed_factor
+            self.centerx -= self.ship_settings.speed_factor
 
         self.rect.centerx = self.centerx
 
-    def blitme(self):
+    def draw(self):
         self.screen.blit(self.image, self.rect)

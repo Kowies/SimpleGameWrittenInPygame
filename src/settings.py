@@ -28,8 +28,8 @@ class AlienSettings():
 class GameSettings():
 
     def __init__(self):
-        self.screenSettings = ScreenSettings()
-        self.shipSettings = ShipSettings()
-        self.bulletSettings = BulletSettings()
-        self.alienSettings = AlienSettings()
+        self.screen_settings = ScreenSettings()
+        self.ship_settings = ShipSettings()
+        self.bullet_settings = BulletSettings()
+        self.alien_settings = AlienSettings()
 
