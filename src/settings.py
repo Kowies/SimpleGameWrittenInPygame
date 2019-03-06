@@ -12,7 +12,8 @@ class ShipSettings():
 
 class BulletSettings():
 
-    def __init__(self, speed_factor = 1, width = 3, height = 15, color = (30, 30, 30) ):
+    def __init__(self, speed_factor = 1, width = 3, height = 15, 
+            color = (30, 30, 30) ):
         self.speed_factor = speed_factor
         self.width = width
         self.height = height
@@ -21,9 +22,12 @@ class BulletSettings():
 
 class AlienSettings():
 
-    def __init__(self, width = 30, height = 30):
+    def __init__(self, width = 40, height = 40, number_rows = 3,
+            speed_factor = 0.5):
         self.width = width
         self.height = height
+        self.number_rows = number_rows
+        self.speed_factor = speed_factor
 
 class GameSettings():
 
