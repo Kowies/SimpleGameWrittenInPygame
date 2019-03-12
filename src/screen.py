@@ -2,10 +2,9 @@ import pygame
 
 class Screen():
 
-    def __init__(self, game_settings):
+    def __init__(self, screen_settings):
 
-        self.__game_settings = game_settings
-        screen_settings = self.__game_settings.screen_settings
+        self.__screen_settings = screen_settings
 
         self.__bg_color = screen_settings.bg_color
         pygame.display.set_caption(screen_settings.caption)

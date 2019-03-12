@@ -9,8 +9,11 @@ class ScreenSettings():
 
 class ShipSettings():
 
-    def __init__(self, speed_factor=0.5):
+    def __init__(self, speed_factor=0.3, image_resolution=(45, 60), 
+            image_path="../images/ship.bmp"):
         self.speed_factor = speed_factor
+        self.image_resolution = image_resolution
+        self.image_path = image_path
 
 class BulletSettings():
 
