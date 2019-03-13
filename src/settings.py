@@ -17,13 +17,11 @@ class ShipSettings():
 
 class BulletSettings():
 
-    def __init__(self, speed_factor=1, width=3, height=15, 
-            color=(30, 30, 30), bullets_allowed=3 ):
+    def __init__(self, speed_factor=1, image_resolution=(30, 30), 
+            image_path="../images/bullet.bmp"):
         self.speed_factor = speed_factor
-        self.width = width
-        self.height = height
-        self.color = color
-        self.bullets_allowed = bullets_allowed
+        self.image_resolution = image_resolution
+        self.image_path = image_path
 
 class GameSettings():
 

@@ -15,5 +15,5 @@ class Screen():
     def update(self):
         self.surface.fill(self.__bg_color)
 
-    def draw(self):
+    def flip(self):
         pygame.display.flip()
