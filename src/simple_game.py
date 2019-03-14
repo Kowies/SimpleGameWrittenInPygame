@@ -3,9 +3,8 @@ import pygame
 from settings import GameSettings
 from screen import Screen
 from ship import Ship
+from bullets import Bullets
 from event_checker import EventChecker
-
-from bullet import Bullet #only for tests
 
 class SimpleGameWrittenInPygame():
 
@@ -13,17 +12,19 @@ class SimpleGameWrittenInPygame():
         self.__game_settings = GameSettings()
         self.__screen = Screen(self.__game_settings.screen_settings)
         self.__ship = Ship(self.__game_settings.ship_settings, self.__screen)
+
+        self.__bullets = Bullets(self.__game_settings.bullets_settings, 
+            self.__ship, self.__screen)
+
         self.__event_checker = EventChecker(self.__game_settings, 
-            self.__ship) 
+            self.__ship, self.__bullets)
 
     def run_game(self):
         pygame.init()
-        
-        bullet = Bullet(self.__game_settings.bullet_settings, self.__ship)
-        to_update = [self.__ship]
-        to_draw = [self.__ship]
-        screen_surface = self.__screen.surface
 
+        to_update = [self.__ship, self.__bullets]
+        to_draw = [self.__ship, self.__bullets]
+        screen_surface = self.__screen.surface
 
         while True:
             self.__event_checker.check_events()
@@ -35,6 +36,7 @@ class SimpleGameWrittenInPygame():
                 x.draw(screen_surface)
             self.__screen.flip()
 
+            print(len(self.__bullets))
 
 if __name__ == "__main__":
     game = SimpleGameWrittenInPygame()

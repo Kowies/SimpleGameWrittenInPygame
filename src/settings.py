@@ -23,10 +23,17 @@ class BulletSettings():
         self.image_resolution = image_resolution
         self.image_path = image_path
 
+class BulletsSettings():
+    def __init__(self, bullet_settings=BulletSettings(), max_amount=3):
+        self.bullet_settings = bullet_settings
+
+        #the maximum number of bullets on the screen at the same time
+        self.max_amount = max_amount 
+
+
 class GameSettings():
 
     def __init__(self):
         self.screen_settings = ScreenSettings()
         self.ship_settings = ShipSettings()
-        self.bullet_settings = BulletSettings()
-
+        self.bullets_settings = BulletsSettings()
