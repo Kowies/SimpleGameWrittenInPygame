@@ -6,6 +6,9 @@ from ship import Ship
 from bullets import Bullets
 from event_checker import EventChecker
 
+from dvd_logo import DVDLogo
+from settings import DVDLogoSettings
+
 class SimpleGameWrittenInPygame():
 
     def __init__(self):
@@ -22,8 +25,13 @@ class SimpleGameWrittenInPygame():
     def run_game(self):
         pygame.init()
 
-        to_update = [self.__ship, self.__bullets]
-        to_draw = [self.__ship, self.__bullets]
+        rect = self.__screen.surface.get_rect()
+        center = [rect.centerx, rect.centery]
+
+        dvd_logo = DVDLogo(DVDLogoSettings(), center, [0.1,0.1] )
+
+        to_update = [self.__ship, self.__bullets, dvd_logo]
+        to_draw = [self.__ship, self.__bullets, dvd_logo]
         screen_surface = self.__screen.surface
 
         while True:

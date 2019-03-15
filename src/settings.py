@@ -28,12 +28,22 @@ class BulletsSettings():
         self.bullet_settings = bullet_settings
 
         #the maximum number of bullets on the screen at the same time
-        self.max_amount = max_amount 
+        self.max_amount = max_amount
 
+class DVDLogoSettings():
+    def __init__(self, speed_factor=1, image_resolution=(80, 60), 
+            image_path="../images/dvd_logo.bmp"):
+        self.speed_factor = speed_factor
+        self.image_resolution = image_resolution
+        self.image_path = image_path
+
+class DVDLogosSettings():
+    def __init__(self, bullet_settings=DVDLogoSettings()):
+        self.bullet_settings = bullet_settings
 
 class GameSettings():
-
     def __init__(self):
         self.screen_settings = ScreenSettings()
         self.ship_settings = ShipSettings()
         self.bullets_settings = BulletsSettings()
+        self.dvdlogos_settings = DVDLogosSettings()

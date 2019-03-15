@@ -12,14 +12,12 @@ class Bullet(Sprite):
         self.image = pygame.image.load(image_path)
 
         image_resolution = self.__bullet_settings.image_resolution
-        self.image = pygame.transform.scale(self.image, 
-            image_resolution)
+        self.image = pygame.transform.scale(self.image, image_resolution)
 
         self.rect = self.image.get_rect()
-        self.__ship_rect = ship.rect
 
-        self.rect.centerx = self.__ship_rect.centerx
-        self.rect.top = self.__ship_rect.top
+        self.rect.centerx = ship.rect.centerx
+        self.rect.top = ship.rect.top
 
         self.__centery = float(self.rect.centery)
 
