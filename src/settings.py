@@ -31,8 +31,8 @@ class BulletsSettings():
         self.max_amount = max_amount
 
 class DVDLogoSettings():
-    def __init__(self, speed_factor=1, image_resolution=(80, 60), 
-            image_path="../images/dvd_logo.bmp"):
+    def __init__(self, speed_factor=0.3, image_resolution=(80, 60), 
+            image_path="../images/bullet.bmp"):
         self.speed_factor = speed_factor
         self.image_resolution = image_resolution
         self.image_path = image_path

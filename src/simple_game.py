@@ -25,10 +25,9 @@ class SimpleGameWrittenInPygame():
     def run_game(self):
         pygame.init()
 
-        rect = self.__screen.surface.get_rect()
-        center = [rect.centerx, rect.centery]
 
-        dvd_logo = DVDLogo(DVDLogoSettings(), center, [0.1,0.1] )
+
+        dvd_logo = DVDLogo(DVDLogoSettings(), self.__screen, [0.1,0.1] )
 
         to_update = [self.__ship, self.__bullets, dvd_logo]
         to_draw = [self.__ship, self.__bullets, dvd_logo]
