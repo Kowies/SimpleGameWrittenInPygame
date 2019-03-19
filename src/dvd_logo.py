@@ -5,19 +5,18 @@ from pygame.sprite import Sprite
 
 class DVDLogo(Sprite):
 
-    def __init__(self, dvdlogo_settings, screen, vector):
+    def __init__(self, dvd_logo_settings, screen, rect, vector):
         super().__init__()
 
-        self.__dvdlogo_settings = dvdlogo_settings
+        self.__dvd_logo_settings = dvd_logo_settings
 
-        image_path = self.__dvdlogo_settings.image_path
+        image_path = self.__dvd_logo_settings.image_path
         self.image = pygame.image.load(image_path)
 
-        image_resolution = self.__dvdlogo_settings.image_resolution
+        image_resolution = self.__dvd_logo_settings.image_resolution
         self.image = pygame.transform.scale(self.image, image_resolution)
 
-        color = tuple((np.random.rand(3) * 256).astype(int) )
-        self.change_color(color)
+        self.change_color_to_rand()
 
         self.rect = self.image.get_rect()
 
@@ -33,19 +32,23 @@ class DVDLogo(Sprite):
 
         vector_normalized = vector / (vector**2).sum()**0.5
         self.vector = vector_normalized
-        self.vector *= self.__dvdlogo_settings.speed_factor
+        self.vector *= self.__dvd_logo_settings.speed_factor
 
     def change_color(self, color):
         surface = self.image
         w, h = surface.get_size()
         r, g, b = color
-        r = int(r)
-        g = int(g)
-        b = int(b)
         for x in range(w):
             for y in range(h):
                 a = surface.get_at((x, y))[3]
                 surface.set_at((x, y), pygame.Color(r, g, b, a))
+
+
+    def change_color_to_rand(self):
+        color = tuple((np.random.rand(3) * 256).astype(int) )
+        color = [int(x) for x in color]
+        self.change_color(color)
+
 
     def update(self):
         self.__centerx += self.vector[0]
@@ -56,26 +59,20 @@ class DVDLogo(Sprite):
 
         if self.rect.bottom >= self.__screen_surface_rect.bottom:
             self.vector[1] *= -1
-            rand_color = (np.random.rand(3) * 256).astype(int)
-            self.change_color(rand_color)
+            self.change_color_to_rand()
 
         if self.rect.top <= self.__screen_surface_rect.top:
             self.vector[1] *= -1
-            rand_color = (np.random.rand(3) * 256).astype(int)
-            self.change_color(rand_color)
+            self.change_color_to_rand()
 
         if self.rect.left <= self.__screen_surface_rect.left:
             self.vector[0] *= -1
-            rand_color = tuple((np.random.rand(3) * 128).astype(int) )
-            print(rand_color)
-            self.change_color(rand_color)
+            self.change_color_to_rand()
 
         if self.rect.right >= self.__screen_surface_rect.right:
             self.vector[0] *= -1
-            rand_color = (np.random.rand(3) * 256).astype(int)
-            self.change_color(rand_color)
+            self.change_color_to_rand()
 
-        
 
     def draw(self, screen_surface):
         screen_surface.blit(self.image, self.rect)

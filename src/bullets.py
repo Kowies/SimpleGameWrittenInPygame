@@ -1,10 +1,10 @@
-from bullet import Bullet
-
 from pygame.sprite import Group
+
+from bullet import Bullet
 
 class Bullets(Group):
 
-    def __init__(self, bullets_settings, ship, screen):
+    def __init__(self, bullets_settings, screen):
         super().__init__()
 
         self.__bullets_settings = bullets_settings
