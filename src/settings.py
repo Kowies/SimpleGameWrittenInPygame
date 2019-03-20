@@ -41,9 +41,14 @@ class DVDLogosSettings():
     def __init__(self, dvd_logo_settings=DVDLogoSettings()):
         self.dvd_logo_settings = dvd_logo_settings
 
+class CollisionDetectorSettings():
+    def __init__(self):
+        pass
+
 class GameSettings():
     def __init__(self):
         self.screen_settings = ScreenSettings()
         self.ship_settings = ShipSettings()
         self.bullets_settings = BulletsSettings()
         self.dvd_logos_settings = DVDLogosSettings()
+        self.collison_detector_settings = CollisionDetectorSettings()

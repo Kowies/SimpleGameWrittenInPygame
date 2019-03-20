@@ -29,4 +29,12 @@ class Bullets(Group):
                 self.remove(bullet)
                 self.amount_of_bullets -= 1
 
+    def remove(self, *sprites):
+        l = len(sprites) 
+
+        self.amount_of_bullets -= l
+        print(sprites, "len:", l)
+
+        super().remove(*sprites)
+
 

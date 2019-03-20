@@ -4,9 +4,11 @@ from settings import GameSettings
 from screen import Screen
 from ship import Ship
 from bullets import Bullets
+from dvd_logos import DVDLogos
+from collision_detector import CollisionDetector
 from event_checker import EventChecker
 
-from dvd_logos import DVDLogos
+
 
 class SimpleGameWrittenInPygame():
 
@@ -21,6 +23,10 @@ class SimpleGameWrittenInPygame():
         self.__dvd_logos = DVDLogos(self.__game_settings.dvd_logos_settings, 
             self.__ship, self.__screen)
 
+        self.__collison_detector = CollisionDetector(
+            self.__game_settings.collison_detector_settings, self.__ship,
+            self.__bullets, self.__dvd_logos)
+
         self.__event_checker = EventChecker(self.__game_settings, 
             self.__ship, self.__bullets)
 
@@ -28,7 +34,8 @@ class SimpleGameWrittenInPygame():
     def run_game(self):
         pygame.init()
 
-        to_update = [self.__ship, self.__bullets, self.__dvd_logos]
+        to_update = [self.__collison_detector, self.__ship, self.__bullets, 
+            self.__dvd_logos]
         to_draw = [self.__ship, self.__bullets, self.__dvd_logos]
         screen_surface = self.__screen.surface
 
@@ -37,6 +44,8 @@ class SimpleGameWrittenInPygame():
         while True:
             self.__event_checker.check_events()
 
+
+
             self.__screen.update()
             for x in to_update:
                 x.update()
@@ -44,7 +53,8 @@ class SimpleGameWrittenInPygame():
                 x.draw(screen_surface)
             self.__screen.flip()
 
-            print(len(self.__bullets))
+            print(self.__bullets.amount_of_bullets)
+            #print(len(self.__bullets))
 
 if __name__ == "__main__":
     game = SimpleGameWrittenInPygame()
