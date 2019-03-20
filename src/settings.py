@@ -38,7 +38,7 @@ class DVDLogoSettings():
         self.image_path = image_path
 
 class DVDLogosSettings():
-    def __init__(self, dvdlogo_settings=DVDLogoSettings()):
+    def __init__(self, dvd_logo_settings=DVDLogoSettings()):
         self.dvd_logo_settings = dvd_logo_settings
 
 class GameSettings():

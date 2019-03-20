@@ -13,53 +13,67 @@ class DVDLogos(Group):
         self.__dvd_logos_settings = dvd_logos_settings
         self.__ship = ship
 
-        self.__screen_surface_rect = screen.surface.get_rect()
+        self.__screen = screen
 
-        self.__screen_surface_rect_allowed = self.__screen_surface_rect
-
-        self.__screen_surface_rect_allowed.bottom //= 2
-
-        dvd_logo_settings = self.__dvd_logos_settings.dvd_logo_settings
-        self.__logo_resolution = dvd_logo_settings.image_resolution
-
-        self.__screen_surface_rect_allowed.bottom -= logo_resolution[1]
-        self.__screen_surface_rect_allowed.top += logo_resolution[1]
-
-        self.__screen_surface_rect_allowed.right -= logo_resolution[0]
-        self.__screen_surface_rect_allowed.left += logo_resolution[0] 
+        self.__allowed_rect_for_spawn = self.designate_allowed_rect()
 
         self.__number_of_logos = 0
+
+
+    def designate_allowed_rect(self):
+        screen_surface_rect = self.__screen.surface.get_rect()
+
+        left = screen_surface_rect.left
+        right = screen_surface_rect.right
+        top = screen_surface_rect.top
+        bottom = screen_surface_rect.bottom
+
+        bottom //= 2
+
+        dvd_logo_settings = self.__dvd_logos_settings.dvd_logo_settings
+        logo_resolution = dvd_logo_settings.image_resolution
+
+        bottom -= logo_resolution[1]
+        top += logo_resolution[1]
+
+        right -= logo_resolution[0]
+        left += logo_resolution[0]
+
+        widht = right - left
+        height = bottom - top
+
+        return Rect((left, top), (widht, height))
 
     @staticmethod
     def rand_vector():
         return (random.random(), random.random())
 
-    def rand_rect_which_allowed(self):
-        rect = Rect((0, 0), self.__logo_resolution)
+    def rand_point_which_allowed(self):
+        point = [0, 0]
+        left = self.__allowed_rect_for_spawn.left
+        right = self.__allowed_rect_for_spawn.right
+        top = self.__allowed_rect_for_spawn.top
+        bottom = self.__allowed_rect_for_spawn.bottom
 
-        left = self.__screen_surface_rect_allowed.left
-        right = self.__screen_surface_rect_allowed.right
-        top = self.__screen_surface_rect_allowed.top
-        bottom = self.__screen_surface_rect_allowed.bottom
-
-        rect.centerx = random.randrange(left, right)
-        rect.centery = random.randrange(top, bottom)
+        point[0] = random.randrange(left, right)
+        point[1] = random.randrange(top, bottom)
+        return point
 
     def create(self, number=5):
-
         for i in range(number):
-            rect = self.rand_rect_which_allowed()
+            point = self.rand_point_which_allowed()
             vector = self.rand_vector()
 
             dvd_logo_settings = self.__dvd_logos_settings.dvd_logo_settings
-            new_dvd_logo = DVDLogo(dvd_logo_settings, )
 
+            new_dvd_logo = DVDLogo(dvd_logo_settings, self.__screen, 
+                point, vector)
+            self.add(new_dvd_logo)
+            self.__number_of_logos += 1
 
     def update(self):
-        for bullet in self.sprites():
-            bullet.update()
-            if bullet.rect.bottom < self.__screen_surface_rect.top:
-                self.remove(bullet)
-                self.amount_of_bullets -= 1
+        for dvd_logo in self.sprites():
+            dvd_logo.update()
+
 
 

@@ -4,7 +4,7 @@ from bullet import Bullet
 
 class Bullets(Group):
 
-    def __init__(self, bullets_settings, screen):
+    def __init__(self, bullets_settings, ship, screen):
         super().__init__()
 
         self.__bullets_settings = bullets_settings

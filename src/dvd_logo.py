@@ -5,7 +5,7 @@ from pygame.sprite import Sprite
 
 class DVDLogo(Sprite):
 
-    def __init__(self, dvd_logo_settings, screen, rect, vector):
+    def __init__(self, dvd_logo_settings, screen, point, vector):
         super().__init__()
 
         self.__dvd_logo_settings = dvd_logo_settings
@@ -15,22 +15,21 @@ class DVDLogo(Sprite):
 
         image_resolution = self.__dvd_logo_settings.image_resolution
         self.image = pygame.transform.scale(self.image, image_resolution)
-
         self.change_color_to_rand()
 
         self.rect = self.image.get_rect()
 
         self.__screen_surface_rect = screen.surface.get_rect()
 
-        self.rect.centerx = self.__screen_surface_rect.centerx
-        self.rect.centery = self.__screen_surface_rect.centery
+        self.rect.centerx = point[0]
+        self.rect.centery = point[1]
 
         self.__centerx = float(self.rect.centerx)
         self.__centery = float(self.rect.centery)
 
         vector = np.array(vector)
 
-        vector_normalized = vector / (vector**2).sum()**0.5
+        vector_normalized = vector / (vector**2).sum() ** 0.5
         self.vector = vector_normalized
         self.vector *= self.__dvd_logo_settings.speed_factor
 
