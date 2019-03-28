@@ -44,8 +44,6 @@ class SimpleGameWrittenInPygame():
         while True:
             self.__event_checker.check_events()
 
-
-
             self.__screen.update()
             for x in to_update:
                 x.update()

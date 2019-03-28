@@ -10,5 +10,5 @@ class CollisionDetector():
 
 
     def update(self):
-        sprite_dict = groupcollide(self.__bullets, self.__dvd_logos, False, False)
-        self.__bullets.remove(sprite_dict.keys())
+        sprite_dict = groupcollide(self.__bullets, self.__dvd_logos, False, True)
+        self.__bullets.remove(*sprite_dict.keys())
