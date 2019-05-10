@@ -18,4 +18,4 @@ class CollisionDetector():
         sprite_dict = groupcollide(self.__bullets, self.__dvd_logos, False, True)
 
         self.__bullets.remove(*sprite_dict.keys())
-        self.__dvd_logos.remove(*sprite_dict.keys())
+        self.__dvd_logos.remove(*sprite_dict.keys()) # THIS SHOULDN'T LOOK LOOK LIKE THIS !!!

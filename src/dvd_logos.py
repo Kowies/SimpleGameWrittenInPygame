@@ -77,6 +77,7 @@ class DVDLogos(Group):
             return True
         return False
 
+    # DONT WORK PROPERLY !!!
     def remove(self, *sprites):
         amout_of_spirtes = 0
 
