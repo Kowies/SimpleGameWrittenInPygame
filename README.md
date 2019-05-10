@@ -1,8 +1,6 @@
 # SimpleGameWrittenInPygame
 This is simple game written in pygame. Who would have thought?!
 
-# Screenshot
-![Screenshot](screenshot.png "Screenshot from the game")
 
 # Installation
 
@@ -31,6 +29,12 @@ $ ./laucher
 
 **q** - turn off the game
 
+
+# Screenshot
+![Screenshot](screenshot.png "Screenshot from the game")
+
+
 # License
 
 [MIT](Kowies/SimpleGameWrittenInPygame/blob/master/LICENSE)
+
