@@ -1,4 +1,4 @@
-from pygame.sprite import groupcollide
+from pygame.sprite import groupcollide, spritecollideany
 
 class CollisionDetector():
 
@@ -8,7 +8,14 @@ class CollisionDetector():
         self.__bullets = bullets
         self.__dvd_logos = dvd_logos
 
+    def ship_was_hit(self):
+        if spritecollideany(self.__ship, self.__dvd_logos) == None:
+            return False
+        else:
+            return True
 
     def update(self):
         sprite_dict = groupcollide(self.__bullets, self.__dvd_logos, False, True)
+
         self.__bullets.remove(*sprite_dict.keys())
+        self.__dvd_logos.remove(*sprite_dict.keys())

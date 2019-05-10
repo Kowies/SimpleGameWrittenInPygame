@@ -1,4 +1,5 @@
 import random
+import collections
 
 from pygame.sprite import Group
 from pygame import Rect
@@ -70,6 +71,24 @@ class DVDLogos(Group):
                 point, vector)
             self.add(new_dvd_logo)
             self.__number_of_logos += 1
+
+    def is_any_logo(self):
+        if self.__number_of_logos > 0:
+            return True
+        return False
+
+    def remove(self, *sprites):
+        amout_of_spirtes = 0
+
+        for sprite in sprites:
+            if isinstance(sprite, collections.Iterable):
+                amout_of_spirtes += len(sprite)
+            else:
+                amout_of_spirtes += 1
+
+        self.__number_of_logos -= amout_of_spirtes
+
+        super().remove(*sprites)
 
     def update(self):
         for dvd_logo in self.sprites():

@@ -39,7 +39,7 @@ class SimpleGameWrittenInPygame():
         to_draw = [self.__ship, self.__bullets, self.__dvd_logos]
         screen_surface = self.__screen.surface
 
-        self.__dvd_logos.create(10)
+        self.__dvd_logos.create(15)
 
         while True:
             self.__event_checker.check_events()
@@ -51,8 +51,13 @@ class SimpleGameWrittenInPygame():
                 x.draw(screen_surface)
             self.__screen.flip()
 
-            print(self.__bullets.amount_of_bullets)
-            #print(len(self.__bullets))
+            if self.__dvd_logos.is_any_logo() != True:
+                print("YOU WIN! :D")
+                return 0
+            if self.__collison_detector.ship_was_hit():
+                print("YOU LOSE! :<")
+                return 0
+
 
 if __name__ == "__main__":
     game = SimpleGameWrittenInPygame()

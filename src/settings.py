@@ -10,7 +10,7 @@ class ScreenSettings():
 class ShipSettings():
 
     def __init__(self, speed_factor=0.3, image_resolution=(45, 60), 
-            image_path="../images/ship.bmp"):
+            image_path="./images/ship.bmp"):
         self.speed_factor = speed_factor
         self.image_resolution = image_resolution
         self.image_path = image_path
@@ -18,7 +18,7 @@ class ShipSettings():
 class BulletSettings():
 
     def __init__(self, speed_factor=1, image_resolution=(30, 30), 
-            image_path="../images/bullet.bmp"):
+            image_path="./images/bullet.bmp"):
         self.speed_factor = speed_factor
         self.image_resolution = image_resolution
         self.image_path = image_path
@@ -32,7 +32,7 @@ class BulletsSettings():
 
 class DVDLogoSettings():
     def __init__(self, speed_factor=0.3, image_resolution=(80, 80), 
-            image_path="../images/dvd_logo.bmp"):
+            image_path="./images/dvd_logo.bmp"):
         self.speed_factor = speed_factor
         self.image_resolution = image_resolution
         self.image_path = image_path
