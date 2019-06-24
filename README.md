@@ -36,5 +36,5 @@ $ ./laucher
 
 # License
 
-[MIT](Kowies/SimpleGameWrittenInPygame/blob/master/LICENSE)
+[MIT](LICENSE)
 
