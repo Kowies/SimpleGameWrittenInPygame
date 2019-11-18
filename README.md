@@ -1,5 +1,5 @@
 # SimpleGameWrittenInPygame
-🎮 Simple game written using the Pygame library. Who would have thought?!
+🎮 Simple game written using the Pygame library.
 
 
 # Installation
